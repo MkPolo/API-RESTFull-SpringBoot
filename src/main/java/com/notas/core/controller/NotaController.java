@@ -1,10 +1,13 @@
 package com.notas.core.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.notas.core.entity.Nota;
+import com.notas.core.model.MNota;
 import com.notas.core.service.NotaService;
 
 @RestController
@@ -36,6 +40,11 @@ public class NotaController {
 	@DeleteMapping("/nota/{id}/{nombre}")
 	public boolean borrarNota(@PathVariable("id") long id, @PathVariable("nombre") String nombre) {
 		return service.borrar(nombre, id);
+	}
+	
+	@GetMapping("/nota")
+	public List<MNota> obtenerNota(){
+		return service.obtener();
 	}
 	
 }

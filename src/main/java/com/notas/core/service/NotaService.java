@@ -2,6 +2,8 @@ package com.notas.core.service;
 
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -23,11 +25,18 @@ public class NotaService {
 	@Qualifier("convertidor")
 	private Convertidor convertidor;
 	
+	//Creamos un log para mostrar los cambios en la consola de spring
+	private static final Log logger = LogFactory.getLog(NotaService.class);
+	
 	public boolean crear (Nota nota) {
+		// Esto es un mensaje en el log
+		logger.info("CREANDO NOTA");
 		try {
 			repositorio.save(nota);
+			logger.info("NOTA CREADA");
 			return true;
 		} catch (Exception e) {
+			logger.error("HUBO UN ERROR");
 			return false;
 		}
 	}

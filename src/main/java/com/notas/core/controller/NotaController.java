@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,9 +21,14 @@ public class NotaController {
 	@Qualifier("servicio")
 	NotaService service;
 	
-	@PutMapping("/nota")
+	@PostMapping("/nota")
 	public boolean agregarNota(@RequestBody @Valid Nota nota) {
 		return service.crear(nota);
+	}
+	
+	@PutMapping("/nota")
+	public boolean actualizarNota(@RequestBody @Valid Nota nota) {
+		return service.actualizar(nota);
 	}
 	
 }

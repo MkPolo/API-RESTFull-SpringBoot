@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Notas</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"/>
+        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">NO.</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Titulo</th>
+                            <th scope="col">Contenido</th>
+                          </tr>
+                        </thead>
+                        <tbody th:each="nota : ${notas}">
+                          <tr>
+                            <th th:text="${nota.getId()}" scope="row"></th>
+                            <td th:text="${nota.getNombre()}"></td>
+                            <td th:text="${nota.getTitulo()}"></td>
+                            <td th:text="${nota.getContenido()}"></td>
+                          </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
